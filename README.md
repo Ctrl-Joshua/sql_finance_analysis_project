@@ -45,7 +45,7 @@ The goal was to answer **business-driven questions**, not just technical ones, a
 **Business Question:**  
 Is the business growing month over month, and at what rate?
 
-**Logic:**  
+ **Logic:**  
 - Aggregate revenue by month  
 - Compare each month’s revenue with the previous month  
 - Calculate percentage growth  
@@ -80,9 +80,10 @@ ORDER BY month;
 The average MoM revenue growth was approximately 0.31%, indicating slow but stable growth rather than rapid expansion.
 
 ### 2️⃣ Rolling 3-Month Revenue (Trailing Quarterly Performance)
-Business Question:
+**Business Question:**
 What is the underlying revenue trend when short-term volatility is smoothed?
-**Logic:**
+
+ **Logic:**
 
 - Calculate monthly revenue
 
@@ -101,11 +102,15 @@ GROUP BY 1
 ORDER BY month;
 ```
 **Key Insight:**
+The monthly revenue appears(trends) to be predictably stable averaging around about $100,000 monthly.
+
 Rolling revenue behaves like a moving quarterly report, offering earlier visibility into performance trends than fixed quarterly reporting.
+
 
 ### 3️⃣ Top Products by Profit Margin (Not Revenue)
 **Business Question:**
 Which products are most profitable relative to their sales?
+
 **Logic:**
 
 - Join transaction data with product cost data
@@ -133,18 +138,20 @@ GROUP BY p.product_name
 ORDER BY profit_margin_percent DESC;
 ```
 **Key Insight:**
+All products appear to have similar margin efficiency (profit margin) of around 30%. Indicating an even return from all products which is not a perfectly realistic market. It likely reflects how the dataset was generated, implying artificially balanced product margins. 
+
 High revenue does not always imply high profitability — profit margin is a stronger indicator of product performance.
 
 ### 4️⃣ Customer Lifetime Value (CLV)
 **Business Question:**
 Which customers contribute the most long-term value to the business?
-**Logic:**
+ **Logic:**
 
 
 - Aggregate revenue and cost per customer
 
 
-- Compute lifetime profitability
+- Compute lifetime profitability by subtracting lifetime cost from lifetime revenue
 ```sql
 
 SELECT
@@ -165,12 +172,12 @@ CLV analysis helps prioritize customer retention and segmentation, rather than t
 ### 5️⃣ Regional Revenue Contribution %
 **Business Question:**
 How much does each region contribute to total revenue?
-**Logic:**
+ **Logic:**
 
 
 - Aggregate revenue by region
 
-
+- Calculate combined total revenue of all regions
 - Calculate each region’s percentage contribution
 
 ```sql
@@ -192,10 +199,11 @@ SELECT
 FROM regional_revenue rr
 CROSS JOIN total_revenue tr
 ORDER BY contribution_percent DESC;
-
-Key Insight:
-Regional contributions were relatively even, suggesting a balanced or synthetic dataset, which is useful for learning but uncommon in real markets.
 ```
+
+**Key Insight:**
+Regional contributions were relatively even, suggesting a balanced or synthetic dataset, which is useful for learning but uncommon in real markets.
+
 
 ## What I Learned
 
