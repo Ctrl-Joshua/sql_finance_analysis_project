@@ -13,6 +13,8 @@ The analysis focuses on key finance metrics such as:
 
 This mirrors the type of work performed by **financial analysts, business analysts, and data analysts** in real organizations.
 
+SQL queries? Check them out here: [financial_metric_analysis folder](/financial_metric_analysis/)
+
 ---
 
 ## Background
