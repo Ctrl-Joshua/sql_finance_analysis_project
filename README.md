@@ -232,5 +232,3 @@ Regional contributions were relatively even, suggesting a balanced or synthetic 
 - SQL is most powerful when used as a decision-support tool, not just a querying language
 
 
-This project represents a shift from writing SQL queries to performing true financial analysis using data.
-It provides a strong foundation for future work in business intelligence, Power BI, financial modeling, and AI-driven analytics.
