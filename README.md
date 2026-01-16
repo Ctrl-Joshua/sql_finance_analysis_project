@@ -2,7 +2,7 @@
 
 ## Introduction
 This project demonstrates how SQL can be used to perform **practical financial analysis** on transactional business data.  
-The objective is to go beyond basic querying and apply SQL across the **entire data analysis pipeline** — from raw data to business-ready insights.
+The objective is to go beyond basic querying and apply SQL across the **entire data analysis pipeline** — from raw financial data to business-ready insights.
 
 The analysis focuses on key finance metrics such as:
 - Revenue growth
@@ -11,7 +11,7 @@ The analysis focuses on key finance metrics such as:
 - Regional performance
 - Rolling (trend-based) revenue analysis
 
-This mirrors the type of work performed by **financial analysts, business analysts, and data analysts** in real organizations.
+
 
 SQL queries? Check them out here: [financial_metric_analysis folder](/financial_metric_analysis/)
 
@@ -26,7 +26,7 @@ The dataset represents a simplified but realistic business environment consistin
 - Regions
 - Sales transactions over time
 
-The goal was to answer **business-driven questions**, not just technical ones, and to interpret results in a way that supports **decision-making**.
+My goal was to answer **business-driven questions**, not just technical ones, and to interpret results in a way that supports **decision-making**.
 
 ---
 
@@ -102,7 +102,7 @@ GROUP BY 1
 ORDER BY month;
 ```
 **Key Insight:**
-The monthly revenue appears(trends) to be predictably stable averaging around about $100,000 monthly.
+The monthly revenue appears (trends) to be predictably stable averaging around about $100,000 monthly, ie about $300,000 in a 3-month window.
 
 Rolling revenue behaves like a moving quarterly report, offering earlier visibility into performance trends than fixed quarterly reporting.
 
