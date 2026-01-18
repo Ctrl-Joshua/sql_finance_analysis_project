@@ -84,9 +84,7 @@ The average MoM revenue growth was approximately 0.31%, indicating slow but stab
 What is the underlying revenue trend when short-term volatility is smoothed?
 
  **Logic:**
-
 - Calculate monthly revenue
-
 - Apply a rolling 3-month window to capture trailing performance
 
 ```sql
@@ -112,14 +110,10 @@ Rolling revenue behaves like a moving quarterly report, offering earlier visibil
 Which products are most profitable relative to their sales?
 
 **Logic:**
-
 - Join transaction data with product cost data
-
-
 - Calculate revenue, cost, profit, and profit margin
-
-
 - Rank products by margin efficiency
+
 ```sql
 
 SELECT
@@ -145,15 +139,12 @@ High revenue does not always imply high profitability — profit margin is a str
 ### 4️⃣ Customer Lifetime Value (CLV)
 **Business Question:**
 Which customers contribute the most long-term value to the business?
+
  **Logic:**
-
-
 - Aggregate revenue and cost per customer
-
-
 - Compute lifetime profitability by subtracting lifetime cost from lifetime revenue
-```sql
 
+```sql
 SELECT
     c.customer_id,
     c.customer_name,
@@ -166,17 +157,27 @@ JOIN products p ON t.product_id = p.product_id
 GROUP BY c.customer_id, c.customer_name
 ORDER BY customer_lifetime_value DESC;
 ```
+#### Table 1: Customer Lifetime Value (CLV)
+
+| Customer Name | Lifetime Revenue | Lifetime Cost | Lifetime Profit |
+|---------------|------------------|---------------|-----------------|
+| Vertex Stores | 286,915          | 199,400       | 87,515          |
+| Alpha Stores  | 286,909          | 199,991       | 86,918          |
+| Prime Supplies| 280,027          | 195,307       | 84,720          |
+
+**As shown in Table 1, CLV varies significantly despite similar revenue levels.**
+
 **Key Insight:**
-CLV analysis helps prioritize customer retention and segmentation, rather than treating all customers equally.
+Though it is worth noting that the data was synthetically balanced as real world Data on customers are unlikely to be so evenly distributed. That said, 
+CLV analysis helps prioritize customer retention and segmentation, I.e helps a business know which customers to focus on for better results (revenue and profit), rather than treating all customers equally.
 
 ### 5️⃣ Regional Revenue Contribution %
 **Business Question:**
 How much does each region contribute to total revenue?
+
  **Logic:**
 
-
 - Aggregate revenue by region
-
 - Calculate combined total revenue of all regions
 - Calculate each region’s percentage contribution
 
@@ -200,6 +201,14 @@ FROM regional_revenue rr
 CROSS JOIN total_revenue tr
 ORDER BY contribution_percent DESC;
 ```
+#### Table 2: Regional Revenue Contribution
+
+| Region Name | Region Revenue | Contribution Percent (%) |
+|------------|----------------|--------------------------|
+| West       | 675,044        | 25.38                    |
+| South      | 674,582        | 25.37                    |
+| North      | 671,451        | 25.25                    |
+| East       | 638,306        | 24.00                    |
 
 **Key Insight:**
 Regional contributions were relatively even, suggesting a balanced or synthetic dataset, which is useful for learning but uncommon in real markets.
@@ -214,8 +223,6 @@ Regional contributions were relatively even, suggesting a balanced or synthetic 
 - Effective use of window functions for time-series analysis
 
 
-- The importance of rolling metrics in financial analysis
-
 
 - Why profitability often matters more than revenue
 
@@ -229,8 +236,6 @@ Regional contributions were relatively even, suggesting a balanced or synthetic 
 
 - The business demonstrates stable but slow growth, which may be acceptable for mature companies but weak for growth-stage firms
 
-
-- Rolling metrics provide earlier insight than fixed reporting periods
 
 
 - Profit margin and CLV analyses reveal insights that revenue alone cannot
